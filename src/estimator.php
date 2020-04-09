@@ -57,11 +57,12 @@ function covid19ImpactEstimator($data)
   $severeImpact->dollarsInFlight = ($severeImpact->infectionsByRequestedTime * $income ) * $population * $day;
 
 
-  return [
-   'data'=> $data,
-    'impact'=>$impact,
-    'severeImpact'=> $severeImpact
-];
+  $arr = array();
+
+   $arr['data'] = $data;
+    $arr['impact'] = $impact;
+    $arr['severeImpact'] = $severeImpact;
+  return $arr;
 }
 
 function period($periodType,$timeToElapse){
