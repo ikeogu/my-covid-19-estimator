@@ -27,40 +27,40 @@ function covid19ImpactEstimator($data)
   
 
   $impact = $data;
-  $severImpact = $data;
+  $severeImpact = $data;
   $reportedCases = $data['reportedCases'];
 
    $impact = new Impact();
-   $severImpact = new SevereImpact();
+   $severeImpact = new SevereImpact();
 
   //  reportedCases
    $impact->currentlyInfected = $reportedCases * 10;
-   $severImpact->currentlyInfected = $reportedCases * 50;
+   $severeImpact->currentlyInfected = $reportedCases * 50;
   //  infectionsByRequestedTime
   $impact->infectionsByRequestedTime  = $impact->currentlyInfected * (2 ** $factor);
-  $severImpact->infectionsByRequestedTime = $severImpact->currentlyInfected * (2 ** $factor);
+  $severeImpact->infectionsByRequestedTime = $severeImpact->currentlyInfected * (2 ** $factor);
   // severeCasesByRequestedTime
   $impact->severeCasesByRequestedTime = 0.15 * $impact->infectionsByRequestedTime;
-  $severImpact->severeCasesByRequestedTime = 0.15 * $severImpact->infectionsByRequestedTime;
+  $severeImpact->severeCasesByRequestedTime = 0.15 * $severeImpact->infectionsByRequestedTime;
   // bed availability in the hospitals for positive patient
   $impact->hospitalBedsByRequestedTime = round($avliableBeds - $impact->severeCasesByRequestedTime);
-  $severImpact->hospitalBedsByRequestedTime =round($avliableBeds - $severImpact->severeCasesByRequestedTime);
+  $severeImpact->hospitalBedsByRequestedTime =round($avliableBeds - $severeImpact->severeCasesByRequestedTime);
 
   // casesForICUByRequestedTime
   $impact->casesForICUByRequestedTime = 0.05 * $impact->infectionsByRequestedTime;
-  $severImpact->casesForICUByRequestedTime = 0.05 * $severImpact->infectionsByRequestedTime;
+  $severeImpact->casesForICUByRequestedTime = 0.05 * $severeImpact->infectionsByRequestedTime;
   // casesForVentilatorsByRequestedTime
   $impact->casesForVentilatorsByRequestedTime = 0.02 * $impact->infectionsByRequestedTime;
-  $severImpact->casesForVentilatorsByRequestedTime = 0.02 * $severImpact->infectionsByRequestedTime;
+  $severeImpact->casesForVentilatorsByRequestedTime = 0.02 * $severeImpact->infectionsByRequestedTime;
 
   $impact->dollarsInFlight = ($impact->infectionsByRequestedTime * $income )* $population * $day;
-  $severImpact->dollarsInFlight = ($severImpact->infectionsByRequestedTime * $income ) * $population * $day;
+  $severeImpact->dollarsInFlight = ($severeImpact->infectionsByRequestedTime * $income ) * $population * $day;
 
 
   return [
    'data'=> $data,
     'impact'=>$impact,
-    'severImpact'=> $severImpact
+    'severeImpact'=> $severeImpact
 ];
 }
 
