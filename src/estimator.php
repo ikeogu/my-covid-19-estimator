@@ -62,7 +62,7 @@ function covid19ImpactEstimator($data)
    $arr['data'] = $data;
     $arr['impact'] = $impact;
     $arr['severeImpact'] = $severeImpact;
-  return $arr;
+  return json_encode($arr);
 }
 
 function period($periodType,$timeToElapse){
