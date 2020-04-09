@@ -2,7 +2,7 @@
 include_once 'impact.php';
 include_once 'severeImpact.php';
 
-$da = [
+$data = [
   'region' => [
     'name'=> 'África',
     'avgAge' =>19.7,
@@ -74,4 +74,4 @@ function period($periodType,$timeToElapse){
 }
 
 
-covid19ImpactEstimator($da);
+covid19ImpactEstimator($data);
