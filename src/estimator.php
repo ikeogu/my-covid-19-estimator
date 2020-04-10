@@ -72,6 +72,8 @@ function period($periodType,$timeToElapse){
     $timeToElapse *= 7;
   }elseif($periodType === "months"){
     $timeToElapse *= 30;
+  }elseif($periodType === "days"){
+    $timeToElapse ;
   }
    return $timeToElapse;
 }
