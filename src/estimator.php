@@ -56,13 +56,14 @@ function covid19ImpactEstimator($data)
   $impact->dollarsInFlight = ($impact->infectionsByRequestedTime * $income )* $population * $day;
   $severeImpact->dollarsInFlight = ($severeImpact->infectionsByRequestedTime * $income ) * $population * $day;
 
-
-  $arr = array(
+  
+ 
+  $arr = [
 
    'data' => $data,
-    'impact' => $impact,
-    'severeImpact' => $severeImpact
-  );
+    'impact' => json_decode(json_encode($impact), true),
+    'severeImpact' =>  json_decode(json_encode($severeImpact), true)
+  ];
   return $arr;
 }
 
