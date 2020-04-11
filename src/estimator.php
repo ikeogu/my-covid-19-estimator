@@ -20,7 +20,7 @@ function covid19ImpactEstimator($data)
 
   $avliableBeds = (0.35 * $data['totalHospitalBeds']);
   $day = period($data['periodType'],$data['timeToElapse']);
-  $factor = ceil($day/3);
+  $factor = round($day/3);
 
   $income = $data['region']['avgDailyIncomeInUSD'];
   $population = $data['region']['avgDailyIncomePopulation'];
