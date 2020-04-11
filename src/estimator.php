@@ -37,8 +37,8 @@ function covid19ImpactEstimator($data)
    $impact->currentlyInfected = $reportedCases * 10;
    $severeImpact->currentlyInfected = $reportedCases * 50;
   //  infectionsByRequestedTime
-  $impact->infectionsByRequestedTime  = $impact->currentlyInfected * (2 ** $factor);
-  $severeImpact->infectionsByRequestedTime = $severeImpact->currentlyInfected * (2 ** $factor);
+  $impact->infectionsByRequestedTime  = $impact->currentlyInfected * (2 * $factor);
+  $severeImpact->infectionsByRequestedTime = $severeImpact->currentlyInfected * (2 * $factor);
   // severeCasesByRequestedTime
   $impact->severeCasesByRequestedTime = 0.15 * $impact->infectionsByRequestedTime;
   $severeImpact->severeCasesByRequestedTime = 0.15 * $severeImpact->infectionsByRequestedTime;
