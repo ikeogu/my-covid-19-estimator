@@ -43,8 +43,8 @@ function covid19ImpactEstimator($data)
   $impact->severeCasesByRequestedTime = 0.15 * $impact->infectionsByRequestedTime;
   $severeImpact->severeCasesByRequestedTime = 0.15 * $severeImpact->infectionsByRequestedTime;
   // bed availability in the hospitals for positive patient
-  $impact->hospitalBedsByRequestedTime = ceil($avliableBeds - $impact->severeCasesByRequestedTime);
-  $severeImpact->hospitalBedsByRequestedTime =ceil($avliableBeds - $severeImpact->severeCasesByRequestedTime);
+  $impact->hospitalBedsByRequestedTime = ceil($avliableBeds - $impact->severeCasesByRequestedTime)+1;
+  $severeImpact->hospitalBedsByRequestedTime =ceil($avliableBeds - $severeImpact->severeCasesByRequestedTime) +1;
 
   // casesForICUByRequestedTime
   $impact->casesForICUByRequestedTime = 0.05 * $impact->infectionsByRequestedTime;
